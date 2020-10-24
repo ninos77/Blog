@@ -20,7 +20,7 @@
           <div class="card" style="width: 18rem;">
           <img class="card-img-top" {% if post.image %}src="{{post.image.url}}"{% else %} alt="..."{% endif %} height="75" width="75">
   <div class="card-body">
-    <h5 class="card-title">{{post.title}}</h5>
+    <h5 class="card-title">{{post.title}} - {{post.date}}</h5>
     <p class="card-text">{{post.content | truncatechars:150}}</p>
     <a href="#" class="btn btn-primary">More</a>
   </div>
