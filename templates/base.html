@@ -47,6 +47,7 @@
     <title>Blog {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    {% block page_header %} {% endblock %} {% block content %} {% endblock %} {% block postloadjs %} {% endblock %}
+    {% include 'includes/main-nav.html'%} {% block page_header %} {% endblock %}
+    {% block content %} {% endblock %} {% block postloadjs %} {% endblock %}
   </body>
 </html>
