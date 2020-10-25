@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Post
 from .forms import PostForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -20,6 +21,7 @@ def detail(request, id):
     return render(request, "posts/detail.html", context)
 
 
+@login_required(login_url='home')
 def create(request):
     if request.method == 'POST':
         form = PostForm(request.POST or None, request.FILES or None)
