@@ -25,7 +25,7 @@ def create(request):
         form = PostForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             post = form.save()
-            return redirect(reverse('post'))
+            return redirect(reverse('detail', kwargs={'id': post.id}))
     else:
         form = PostForm()
     context = {
