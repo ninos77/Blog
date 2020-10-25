@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Post
+from .forms import PostForm
 
 # Create your views here.
 
@@ -17,3 +18,17 @@ def detail(request, id):
         'post': post
     }
     return render(request, "posts/detail.html", context)
+
+
+def create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            post = form.save()
+            return redirect(reverse('post'))
+    else:
+        form = PostForm()
+    context = {
+        'form': form
+    }
+    return render(request, "posts/create.html", context)
