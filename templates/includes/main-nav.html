@@ -22,6 +22,11 @@
           <a class="nav-link" href="{% url 'login_v' %}" tabindex="-1" aria-disabled="true">Login</a>
         </li>
         {% endif %}
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout_v' %}">Logout</a>
+        </li>
+        {% endif %}
         {% if not request.user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register' %}" tabindex="-1" aria-disabled="true">Register</a>
